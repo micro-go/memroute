@@ -58,6 +58,7 @@ func (r *router) disconnect(c *client) error {
 	}
 	defer lock.Write(r.mutex).Unlock()
 	r.subscriptions.lockedClear()
+	close(c.receiver)
 	delete(r.clients, c)
 	return nil
 }
