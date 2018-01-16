@@ -4,6 +4,10 @@ var (
 	singleton = NewRouter()
 )
 
+func Singleton() Router {
+	return singleton
+}
+
 func Connect() (Client, error) {
 	return singleton.Connect()
 }
